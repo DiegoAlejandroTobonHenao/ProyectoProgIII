@@ -1,0 +1,31 @@
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 30vw;
+    
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Text styles */
+    text-align: center;
+    color: white; /* ADD THIS LINE */
+    
+    /* Background styles */
+    background-image: url('https://www.compuestudio.edu.co/wp-content/uploads/2016/04/GESTI%C3%93N-INMOBILIARIA-Y-CORRETAJE-1.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('https://www.compuestudio.edu.co/wp-content/uploads/2016/04/GESTI%C3%93N-INMOBILIARIA-Y-CORRETAJE-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  .hero h1 {
+    /* Text styles */
+    font-size: 5em;
+    
+    /* Margins */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
