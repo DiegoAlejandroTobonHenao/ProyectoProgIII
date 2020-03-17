@@ -1,0 +1,88 @@
+<div id="contact-page" class="row">
+    <fieldset>
+        <legend>Contact Form</legend>
+        <div class="col s12 z-depth-6 card-panel">
+            <form [formGroup]="fgValidation" (ngSubmit)="contactEvent()" class="contact-form">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person</i>
+                        <input class="validate" formControlName="firstName" id="firstName" type="text">
+                        <label for="firstName">Firstname</label>
+                        <div class="warning-validation"
+                            *ngIf="fg.firstName.errors && (fg.firstName.touched || fg.firstName.dirty)">
+                            <strong *ngIf="fg.firstName.errors.required">The firstname is required</strong>
+                            <strong *ngIf="fg.firstName.errors.minlength">The firstname must be at least 5 characters
+                                long</strong>
+                            <strong *ngIf="fg.firstName.errors.maxlength">The firstname must be up to 30 characters
+                                long</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person</i>
+                        <input class="validate" formControlName="lastName" id="lastName" type="text">
+                        <label for="lastName">Lastname</label>
+                        <div class="warning-validation"
+                            *ngIf="fg.lastName.errors && (fg.lastNametouched || fg.lastName.dirty)">
+                            <strong *ngIf="fg.lastName.errors.required">The lastname is required</strong>
+                            <strong *ngIf="fg.lastName.errors.minlength">The lastname must be at least 5 characters
+                                long</strong>
+                            <strong *ngIf="fg.lastName.errors.maxlength">The lastname must be up to 30 characters
+                                long</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mail_outline</i>
+                        <input class="validate" formControlName="email" id="email" type="email">
+                        <label for="email">Email</label>
+                        <div class="warning-validation"
+                            *ngIf="fg.email.errors && (fg.email.touched || fg.email.dirty)">
+                            <strong *ngIf="fg.email.errors.required">The email is required</strong>
+                            <strong *ngIf="fg.email.errors.minlength">The email must be at least 5 characters
+                                long</strong>
+                            <strong *ngIf="fg.email.errors.maxlength">The email must be up to 30 characters
+                                long</strong>
+                            <strong *ngIf="fg.email.errors.email">The email must be a email</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s9">
+                        <i class="material-icons prefix">type</i>
+                        <select id="messageType" formControlName="messageType">
+                            <option value="">Choose the message type</option>
+                            <option value="Purchase">Purchase</option>
+                            <option value="Rent">Rent</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">message</i>
+                        <label class="active" for="message">Message</label>
+                        <textarea formControlName="message" id="message" type="text"></textarea>
+                        <div class="warning-validation"
+                            *ngIf="fg.message.errors && (fg.message.touched || fg.message.dirty)">
+                            <strong *ngIf="fg.message.errors.required">The message is required</strong>
+                            <strong *ngIf="fg.message.errors.minlength">The message must be at least 5 characters
+                                long</strong>
+                            <strong *ngIf="fg.message.errors.maxlength">The message must be up to 50 characters
+                                long</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button [disabled]="fg.firstName.errors || fg.lastName.errors || fg.email.errors || fg.messageType.errors || fg.message.errors"
+                            class="btn waves-effect waves-light blue col s9" type="submit" name="action">Send
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,38 @@
+<nav class="red">
+  <strong *ngIf="userLogged">{{userName}}</strong>
+  <div class="nav-wrapper red">
+    <a routerLink="/home" class="brand-logo">Home Colombia</a>
+    <a href="#" data-target="mobile-inmobiliary" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="!userLogged"><a routerLink="security/login">Login</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="administrator/list">Administrator</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="country/list">Country</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="department/list">Department</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="city/list">City</a></li>
+      <li *ngIf="userLogged && (userInfo.rol == 1 || userInfo.rol == 2)"><a routerLink="property/list">Property</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="asesor/list">Advisor</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 2"><a routerLink="asesor/request">View Requests</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 2"><a routerLink="asesor/advisorRequest">My Requests</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="client/list">Client</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/posts">Request Property</a></li>
+      <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/client/request">Review Requests</a></li>
+      <li *ngIf="userLogged"><a routerLink="security/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <ul class="sidenav" id="mobile-inmobiliary">
+    <li *ngIf="!userLogged"><a routerLink="security/login">Login</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="administrator/list">Administrator</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="country/list">Country</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="department/list">Department</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="city/list">City</a></li>
+    <li *ngIf="userLogged && (userInfo.rol == 1 || userInfo.rol == 2)"><a routerLink="property/list">Property</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="asesor/list">Advisor</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 2"><a routerLink="asesor/request">View Requests</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 2"><a routerLink="asesor/advisorRequest">My Requests</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="client/list">Client</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/posts">Request Property</a></li>
+    <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/client/request">Review Requests</a></li>
+    <li *ngIf="userLogged"><a routerLink="security/logout">Logout</a></li>
+  </ul>

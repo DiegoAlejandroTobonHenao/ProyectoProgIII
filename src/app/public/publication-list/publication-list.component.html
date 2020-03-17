@@ -1,0 +1,63 @@
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col s4">
+      <input type="text" class="form-control" name="filterPostSearch" placeholder="Search Properties"
+        [(ngModel)]="filterPostSearch">
+    </div>
+    <div *ngIf="currentUser.isLogged" class="input-field col s4">
+      <select id="txtPropertyType" [(ngModel)]="filterPostProperty">
+        <option value="">Choose the property type</option>
+        <option value="Apartment">Apartment</option>
+        <option value="House">House</option>
+        <option value="Commercial Space">Commercial Space</option>
+        <option value="Batch">Batch</option>
+      </select>
+      <label>Property Type</label>
+    </div>
+    <div class="input-field col s4">
+      <select id="txtRequestType" [(ngModel)]="filterPostRequest">
+        <option value="">Choose the request type</option>
+        <option value="Purchase">Purchase</option>
+        <option value="Rent">Rent</option>
+      </select>
+      <label>Request Type</label>
+    </div>
+  </div>
+  <h1>Properties</h1>
+  <div class="row">
+    <div class="col s12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Property Type</th>
+            <th>Request Type</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of propertyList | searchBarFilter:filterPostSearch | selectPropertyFilter:filterPostProperty | selectRequestFilter:filterPostRequest">
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.propertyType}}</td>
+            <td>{{p.requestType}}</td>
+            <td><img src="{{p.image}}" (click)="openImage(p.image)" alt="image" style="width: 25%;" class="circle" /></td>
+            <td *ngIf="currentUser.isLogged"><button (click)="doRequest(p)" class="btn waves-effect waves-light orange" type="button" name="action">Send Request
+              <i class="material-icons right">send</i>
+            </button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="modalImage" class="modal">
+  <div class="modal-content">
+      <img src="{{propertyImage}}" alt="image"  style="width: 600px; height:325px"/>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-light btn">Close</a>
+  </div>
+</div>
