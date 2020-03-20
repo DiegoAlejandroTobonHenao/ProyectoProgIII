@@ -24,17 +24,7 @@ export class ClientService {
     let exists = this.clientList.find(c => c.identification == client.identification);
     if (!exists) {
       openPlatformModalMessage("Data stored succesfully");
-      return this.http.post<UserModel>(`${this.url}`, {
-        identification: client.identification,
-        firstName: client.firstName,
-        lastName: client.lastName,
-        address: client.address,
-        phone: client.phone,
-        email: client.email,
-        password: client.password,
-        rol: client.rol,
-        birthDate: client.birthDate
-      },
+      return this.http.post<UserModel>(`${this.url}`, client,
         {
           headers: new HttpHeaders({
             "content-type": "application/json"
@@ -83,7 +73,8 @@ export class ClientService {
         phone: client.phone,
         password: client.password,
         birthDate: client.birthDate,
-        email: client.email
+        email: client.email,
+        secretKey: client.secretKey
       },
         {
           headers: new HttpHeaders({

@@ -15,6 +15,7 @@ export class SecurityService {
   url: String = "http://localhost:3000/api/Users";
   userInfo = new BehaviorSubject<UserModel>(new UserModel());
   sessionInfo = new BehaviorSubject<SessionModel>(new SessionModel());
+  userList: UserModel[] = [];
 
   tokenFromUI: String = "0123456789123456";
 
@@ -29,6 +30,10 @@ export class SecurityService {
     }
   }
 
+  loadAllUsers():Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(`${this.url}`)
+  }
+
   getUserInfo() {
     return this.userInfo.asObservable();
   }
@@ -37,16 +42,28 @@ export class SecurityService {
     return this.sessionInfo.asObservable();
   }
 
+  changePassword(token, currentPass, newPass):Observable<any>{
+    return this.http.post<any>(`${this.url}/change-password?access_token=${token}`,{
+      oldPassword: currentPass,
+      newPassword: newPass
+    },
+    {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
   loginUser(username: String, pass: String): Observable<SessionModel> {
     return this.http.post<SessionModel>(`${this.url}/login?include=User`, {
-      email: username,
-      password: pass
-    },
+        email: username,
+        password: pass
+      },
       {
         headers: new HttpHeaders({
           "content-type": "application/json"
-        })
-      });
+      })
+    });
   }
 
   saveLoginInfo(data: SessionModel) {
@@ -91,14 +108,20 @@ export class SecurityService {
     return this.http.get<UserModel>(`${this.url}?filter={"where":{"email":${email}}}`)
   }
 
-  getUserByEmail(email){
-    let user: UserModel;
-    this.loadUser(email).subscribe(data => {user = data});
-    return user;
-  }
-
-  verifyEmail(email, userId, token):Observable<VerifyEmail>{
-    return this.http.get<VerifyEmail>(`${this.url}/sendEmailVerification?email=${email}&userId=${userId}&token=${token}`)
+  updateUser(user):Observable<UserModel>{
+    return this.http.put<UserModel>(`${this.url}`, {
+      id: user.id,
+      identification: user.identification,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      rol: user.rol,
+      birthDate: user.birthDate,
+      email: user.email,
+      password: user.password,
+      secretKey: user.secretKey,
+      address: user.address,
+      phone: user.phone
+    })
   }
 
   sendEmail(email, subject, message):Observable<EmailModel> {

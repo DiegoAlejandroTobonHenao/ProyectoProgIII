@@ -58,7 +58,8 @@ export class AdministratorService {
         phone: admin.phone,
         password: admin.password,
         birthDate: admin.birthDate,
-        email: admin.email
+        email: admin.email,
+        secretKey: admin.secretKey
       },
         {
           headers: new HttpHeaders({

@@ -3,6 +3,8 @@ import { SecurityService } from 'src/app/services/security.service';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 
+declare var initMaterializeSelect: any;
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -20,6 +22,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.verifyUserSession();
+  }
+
+  ngAfterViewInit(){
+    initMaterializeSelect();
   }
 
   verifyUserSession(){

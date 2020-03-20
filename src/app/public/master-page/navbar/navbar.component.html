@@ -16,6 +16,7 @@
       <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="client/list">Client</a></li>
       <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/posts">Request Property</a></li>
       <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/client/request">Review Requests</a></li>
+      <li *ngIf="userLogged"><a routerLink="security/changePassword">Change Password</a></li>
       <li *ngIf="userLogged"><a routerLink="security/logout">Logout</a></li>
     </ul>
   </div>
@@ -34,5 +35,6 @@
     <li *ngIf="userLogged && userInfo.rol == 1"><a routerLink="client/list">Client</a></li>
     <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/posts">Request Property</a></li>
     <li *ngIf="userLogged && userInfo.rol == 3"><a routerLink="/client/request">Review Requests</a></li>
+    <li *ngIf="userLogged"><a routerLink="security/changePassword">Change Password</a></li>
     <li *ngIf="userLogged"><a routerLink="security/logout">Logout</a></li>
   </ul>

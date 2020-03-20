@@ -68,7 +68,8 @@ export class AsesorService {
         phone: asesor.phone,
         password: asesor.password,
         birthDate: asesor.birthDate,
-        email: asesor.email
+        email: asesor.email,
+        secretKey: asesor.secretKey
       },
         {
           headers: new HttpHeaders({

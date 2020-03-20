@@ -9,6 +9,7 @@ export class UserModel{
     birthDate: String;
     address: String;
     phone: Number;
+    secretKey: String;
     emailVerified?: Boolean = false; 
     isLogged?: boolean = false;
 }
